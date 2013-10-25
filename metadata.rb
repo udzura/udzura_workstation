@@ -6,3 +6,6 @@ description      'The udzura_workstation'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.20131025'
 supports         'mac_os_x'
+depends          'sprout-osx-base'
+depends          'sprout-osx-settings'
+

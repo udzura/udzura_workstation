@@ -11,7 +11,7 @@
 
 ## Dotfilez
 
-file "#{node['sprout']['home']}/.tmux.conf" do
+cookbook_file "#{node['sprout']['home']}/.tmux.conf" do
   mode "0644"
   owner node['current_user']
   action :create

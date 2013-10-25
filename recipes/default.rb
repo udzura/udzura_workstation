@@ -14,7 +14,7 @@
 file "#{node['sprout']['home']}/.tmux.conf" do
   mode "0644"
   owner node['current_user']
-  action :create, :update
+  action [:create, :update]
 end
 
 ## Pow

@@ -13,8 +13,8 @@
   brew pkg
 end
 
-bash 'install emacs with ns patch' do
-  user "root"
+execute 'install emacs with ns patch' do
+  user node['current_user']
   cwd "/tmp"
   command <<-EOB
     wget http://ftp.gnu.org/pub/gnu/emacs/emacs-24.3.tar.xz;
@@ -31,7 +31,7 @@ bash 'install emacs with ns patch' do
   creates "/Applications/Emacs.app"
 end
 
-bash 'checkout emacs conf' do
+execute 'checkout emacs conf' do
   user node['current_user']
   cwd node['sprout']['home']
   command <<-EOB

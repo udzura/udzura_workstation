@@ -31,6 +31,13 @@ execute 'install emacs with ns patch' do
   creates "/Applications/Emacs.app"
 end
 
+execute 'add a zsh conf for emacs' do
+  user node['current_user']
+  command "echo \"alias emacs='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'\" >> ~/.zshrc"
+  action :nothing
+  not_if node['udzura']['skip_emacs_alias']
+end
+
 execute 'checkout emacs conf' do
   user node['current_user']
   cwd node['sprout']['home']
@@ -39,10 +46,5 @@ execute 'checkout emacs conf' do
   EOB
 
   creates "#{node['sprout']['home']}/.emacs.d"
-end
-
-execute 'add a zsh conf for emacs' do
-  user node['current_user']
-  command "echo \"alias emacs='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'\" >> ~/.zshrc"
-  not_if node['udzura']['skip_emacs_alias']
+  notifies :run, 'execute[add a zsh conf for emacs]', :delayed
 end

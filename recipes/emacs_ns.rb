@@ -40,3 +40,9 @@ execute 'checkout emacs conf' do
 
   creates "#{node['sprout']['home']}/.emacs.d"
 end
+
+execute 'add a zsh conf for emacs' do
+  user node['current_user']
+  command "echo \"alias emacs='/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -n'\" >> ~/.zshrc"
+  not_if node['udzura']['skip_emacs_alias']
+end

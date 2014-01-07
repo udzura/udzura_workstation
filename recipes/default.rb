@@ -25,3 +25,5 @@ brew "pow"
 
 brew "imlib2"
 brew "exiftool"
+
+include_recipe "udzura_workstation::emacs_ns"

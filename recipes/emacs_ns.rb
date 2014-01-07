@@ -17,13 +17,13 @@ execute 'install emacs with ns patch' do
   user node['current_user']
   cwd "/tmp"
   command <<-EOB
-    wget http://ftp.gnu.org/pub/gnu/emacs/emacs-24.3.tar.xz;
-    tar xvf emacs-24.3.tar.xz;
+    wget -v http://ftp.gnu.org/pub/gnu/emacs/emacs-24.3.tar.xz
+    tar xvf emacs-24.3.tar.xz
     cd emacs-24.3
-    wget http://svn.sourceforge.jp/svnroot/macemacsjp/inline_patch/trunk/emacs-inline.patch
-    patch -p0 < ../emacs-inline.patch
+    wget -v http://svn.sourceforge.jp/svnroot/macemacsjp/inline_patch/trunk/emacs-inline.patch
+    patch --verbose -p0 < ../emacs-inline.patch
     ./configure --with-ns --without-x && make -j4 && make install
-    cp -r nextstep/Emacs.app /Applications
+    cp -vr nextstep/Emacs.app /Applications
     cd ../
     rm -rf emacs-24.3*
   EOB

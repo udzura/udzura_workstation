@@ -3,8 +3,16 @@ udzura_workstation
 
 Chef cookbooks for my own purpose, used with Pivotal-Sprout(ex. pivotal_workstation)
 
+See also
+========
+
+* https://github.com/udzura/sprout-wrap
+
 Recipes
-======
+=======
+
+* default - includes all
+* emacs_ns
 
 TBD!
 

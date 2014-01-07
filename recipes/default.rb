@@ -20,3 +20,8 @@ end
 ## Pow
 
 brew "pow"
+
+## Other brew toolz
+
+brew "imlib2"
+brew "exiftool"
